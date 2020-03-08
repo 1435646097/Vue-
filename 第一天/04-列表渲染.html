@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li v-for="(item,index) of array">
+                {{item}}------{{index}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(item,index) in array">
+                {{item}}------{{index}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(item,key) in obj">
+                {{item}}------{{key}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(item,key) of obj">
+                {{item}}------{{key}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="item in 10">
+                {{item}}
+            </li>
+        </ul>
+
+        <ul>
+            <input type="text" @input="handleInput()" v-model="model">
+            <li v-for="item in dataList">
+                {{item}}
+            </li>
+        </ul>
+    </div>
+
+
+    <script>
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                array: ["asdsad", "213123123", "xiaobao wo cao ni ma ", "啦啦啦啦"],
+                obj: { "name": "xiaobao", "age": 18, "address": "郴州" },
+                dataList: ["aaa", "bbb", "ccc", "ddd", "add", "cee", "eee"],
+                list: ["aaa", "bbb", "ccc", "ddd", "add", "cee", "eee"],
+                model: ""
+            },
+            methods: {
+                
+                handleInput() {
+                    this.dataList = this.list.filter(item => item.indexOf(this.model) > -1);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

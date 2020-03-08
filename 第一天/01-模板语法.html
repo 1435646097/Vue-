@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .asd{
+            color: red;
+        }
+    </style>
+    <script src="../vue.js"></script>
+
+</head>
+
+<body>
+    <div id="box"  >
+        {{10+10}}
+        <br>
+        {{MyName}}
+        <br>
+        {{BTag}}
+        <!-- 指令 -->
+        <div v-html="BTag"></div>
+        <div v-if="isCreated">看看这个玩意存在不存在</div>
+        <div v-show="isSHow">看看这个玩意能不能隐身</div>
+    </div>
+    <div>
+        {{10+20}}
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                MyName: "XiaoBao",
+                BTag: "<b>大大大</b>",
+                isCreated:true,
+                isSHow:true
+            }
+            //状态
+        });
+    </script>
+</body>
+
+</html>

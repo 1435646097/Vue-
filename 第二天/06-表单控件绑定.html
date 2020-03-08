@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="box">
+    <input type="text" v-model="txt" />
+    <textarea v-model="txt"></textarea>
+    {{txt}}
+    
+    <input type="checkbox" v-model="checked">性别
+    <br>
+    <p>
+        您的兴趣爱好有哪些
+        <input type="checkbox" v-model="habit" value="游泳">游泳
+        <input type="checkbox" v-model="habit" value="跑步">跑步
+        <input type="checkbox" v-model="habit" value="游戏">游戏
+        {{habit}}
+    </p>
+    <p>
+        您的最喜欢干什么?
+        <input type="radio" v-model="like" value="游泳">游泳
+        <input type="radio" v-model="like" value="跑步">跑步
+        <input type="radio" v-model="like" value="游戏">游戏
+        {{like}}
+    </p>
+    
+
+
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                txt:"",
+                checked:false,
+                habit:[],
+                like:""
+            }
+        })
+    </script>
+</body>
+
+</html>

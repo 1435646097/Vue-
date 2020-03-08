@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <style>
+        .ChangeRed {
+            background-color: red;
+        }
+
+        .ChangeYellow {
+            background-color: yellow;
+        }
+
+        .ChangeGreen {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <input type="button" value="change" @click="changeClick">
+        <div :class="Three?'ChangeRed':'ChangeYellow'">
+            Test!!!!!
+        </div>
+        <div :class="objects">
+            Test!!!!!
+        </div>
+        <div :class="array">
+            Test!!!!!
+        </div>
+
+        <br>
+        <br>
+
+
+        <div :style="'backgroundColor:'+(styleBool?'blue':'pink')">
+            行内样式使用三木运算符
+        </div>
+        <div :style="styleObj" >
+            行内样式使用对象
+        </div>
+        <div :style="styleArray">
+            行内样式使用数组
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                Three: true,
+                objects: {
+                    ChangeRed: true,
+                    ChangeYellow: true
+                },
+                array: [
+                    'ChangeRed',
+                    'ChangeYellow',
+                ],
+                styleBool: true,
+                styleObj: {
+                    backgroundColor: 'pink',
+                    fontSize: '20px'
+                },
+                styleArray: [
+                    { backgroundColor: 'blue', fontSize: '50px' }
+                ]
+            },
+            methods: {
+                changeClick() {
+                    this.Three = !this.Three;
+                }
+            }
+        })
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>父传子</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <navbar myname="列表" :isshow="true"></navbar>
+        <navbar myname="首页"></navbar>
+        <navbar myname="购物车" :haha="mybase"></navbar>
+    </div>
+
+
+    <script>
+        Vue.component("navbar", {
+            template: `
+            <div>
+                <button>返回</button>
+               哈哈哈哈
+                <button>{{myname}}</button>
+                <p v-if="isshow">啦啦啦啦</p>
+                {{haha}}
+            </div>
+            `,
+            props:{
+                myname:String,
+                isshow:Boolean,
+                haha:String
+            }
+        });
+
+        new Vue({
+            el: "#box",
+           data:{
+               mybase:"diaonima"
+           }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .kerwinfade-enter-active,
+        .kerwinfade-leave-active {
+            transition: all 1.5s;
+        }
+
+        .kerwinfade-enter,
+        .kerwinfade-leave-to
+
+        /* .fade-leave-active below version 2.1.8 */
+            {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+
+
+        .kerwinbounce-enter-active {
+            animation: bounce-in .5s;
+        }
+
+        .kerwinbounce-leave-active {
+            animation: bounce-in .5s reverse;
+        }
+
+        @keyframes bounce-in {
+            0% {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0px);
+            }
+        }
+    </style>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <input type="text" v-model="msg">
+        <button @click="add()">添加</button>
+        <transition-group tag="ul" name="kerwinbounce">
+
+            <li v-for="(data,index) in list" :key="data">
+                {{data}}
+                <button @click="del(index)">del</button>
+            </li>
+
+        </transition-group>
+    </div>
+
+
+    <script>
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                list: [],
+                msg: ""
+            },
+            methods: {
+                add() {
+                    this.list.push(this.msg);
+                },
+                del(index) {
+                    this.list.splice(index, 1);
+                }
+            }
+           
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .kerwinfade-enter-active,
+        .kerwinfade-leave-active {
+            transition: all 1.5s;
+        }
+
+        .kerwinfade-enter,
+        .kerwinfade-leave-to
+
+        /* .fade-leave-active below version 2.1.8 */
+            {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+
+
+        .kerwinbounce-enter-active {
+            animation: bounce-in .5s;
+        }
+
+        .kerwinbounce-leave-active {
+            animation: bounce-in .5s reverse;
+        }
+
+        @keyframes bounce-in {
+            0% {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0px);
+            }
+        }
+    </style>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <keep-alive>
+            <transition name="kerwinbounce" mode="out-in">
+                <component :is="type"></component>
+            </transition>
+        </keep-alive>
+        <button @click="type='list'">list</button>
+        <button @click="type='index'">index</button>
+        <button @click="type='shopcar'">shopcar</button>
+    </div>
+
+
+    <script>
+        new Vue({
+            el: "#box",
+            data: {
+                type: "index"
+            },
+            components: {
+                "list": {
+                    template: `
+                    <div>list</div>
+                    `
+                },
+                "index": {
+                    template: `
+                    <div>index <input type="text" /></div>
+
+                    `
+                },
+                "shopcar": {
+                    template: `
+                    <div>shopcar</div>
+                    `
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

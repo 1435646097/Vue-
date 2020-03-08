@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <button @click="sourceBandin">start</button>
+        <ul>
+            <li v-for="data in list">
+                <h3>{{data.name}}</h3>
+                <img :src="data.poster">
+            </li>
+        </ul>
+    </div>
+    <script>
+
+
+        new Vue({
+            el: "#box",
+            data: {
+                list: []
+            }, methods: {
+                sourceBandin() {
+                    fetch("音乐.json").then(res => res.json()).then(res => {
+                        this.list = res.data.films;
+                    });
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>

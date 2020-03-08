@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <button @click="ChangeBtn">按钮1</button>
+        <button @click="ChangeBtn()">按钮2</button>
+        <button @click="isShow=!isShow">按钮3</button>
+        <div v-show="isShow">1111111111111</div>
+
+        <ul @click.self="ulHandleClick()">
+            <li @click.stop="liHandleClick()">1111111111</li>
+            <li @click="liHandleClick()">2222222222</li>
+            <li @click.once="liHandleClick">3333333333</li>
+        </ul>
+        <a href="https://www.baidu.com" @click.prevent>去百度，开心一会</a>
+
+        <input type="text" @keyUp.enter="handlerKeyUp($event)">
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                isShow: false
+            },
+            methods: {
+                ChangeBtn() {
+                    this.isShow = !this.isShow;
+                },
+                liHandleClick() {
+                    console.log("这是li的事件");
+                },
+                ulHandleClick() {
+                    console.log("这是Ul的事件");
+                },
+                handlerKeyUp(ev) {
+                    console.log("起飞，enter");
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <navbar></navbar>
+        <niupi></niupi>
+    </div>
+
+    <script>
+        Vue.component("navbar", {
+            template: `
+           <div>
+            <niupi></niupi>
+           <button @click="Home()" style="background-color:red;">返回</button>
+           <input type="text" value="啦啦啦" />
+           <button>首页</button>
+           <xiaobao></xiaobao>
+           {{property}}
+           </div>
+              `,
+            methods: {
+                Home() {
+                    alert('返回不成功');
+                }
+            },
+            components: {
+                xiaobao: {
+                    template: `
+                     <div>
+                    武魂殿必胜！！！
+                    </div>
+                     `
+                }
+               
+            },
+            data() {
+                return {
+                    property: "property!!!!!"
+                }
+            }
+        });
+
+        Vue.component("niupi", {
+            template: `
+            <div>
+            牛逼逼真牛逼
+            </div>
+            `
+        });
+        new Vue({
+            el: "#box"
+        });
+    </script>
+</body>
+
+</html>

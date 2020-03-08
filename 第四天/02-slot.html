@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <swiper>
+            <li slot="a" v-for="data in list">{{data}}</li>
+            <div slot="b">ccccccccccccccc</div>
+        </swiper>
+    </div>
+
+
+    <script>
+        Vue.component("swiper", {
+            template: `
+            <div>
+            <ul>
+            <slot name="a"></slot>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            <slot name="b"></slot>
+            </ul>
+            </div>
+            `
+        })
+
+
+        new Vue({
+            el: "#box",
+            data: {
+                list: ["222222222", "333333333", "555555555555"]
+            }
+        })
+    </script>
+</body>
+
+</html>

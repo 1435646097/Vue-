@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <sidebar @myevent="carNumber($event)"></sidebar>
+    </div>
+
+
+
+    <script>
+        Vue.component("sidebar",{
+            template:`
+            <div>
+            <button @click="payMoeny()">打钱</button>
+            </div>
+            `,
+            methods:{
+                payMoeny(){
+                    this.$emit("myevent",1000);
+                }
+            }
+        });
+
+        new Vue({
+            el:"#box",
+            methods: {
+                carNumber(ev){
+                    console.log("我收到钱了"+ev);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li v-for="data in list">
+                {{data.nm}}
+                <br>
+                <img :src="data.img | filterpath">
+            </li>
+        </ul>
+    </div>
+
+
+
+    <script>
+        Vue.filter("filterpath",function(data){
+            return data.replace("w.h","180.360");
+        });
+
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                list: []
+            },
+            mounted() {
+                axios.get("test.json").then(res => { this.list = res.data.movieList})
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="box" ref="mybase">
+        <input type="text" ref="mytext">
+        <input type="button" value="拉拉" @click="test()">
+        <navbar ref="child"></navbar>
+    </div>
+
+
+
+
+    <script>
+        Vue.component("navbar", {
+            template: `
+            <div>
+            <button>啦啦啦啦</button>
+            </div>
+            `,
+            data() {
+                return {
+                    name: "我是子组件里面的属性"
+                }
+            },
+            methods:{
+                show(){
+                    //alert("这是子组件的方法");
+                }
+            }
+        });
+
+
+        new Vue({
+            el: "#box",
+            methods: {
+                test(){
+                    console.log(this.$refs.child.name);
+                    this.$refs.child.show();
+                    console.log(this.$refs.mytext.value);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

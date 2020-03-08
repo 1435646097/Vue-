@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <input type="button" value="按钮" @click="handler()">
+        <div v-if="condition===1">
+            测试11111111111
+        </div>
+        <div v-else-if="condition===2">
+            测试2222222222
+        </div>
+        <div v-else>
+            测试333333333
+        </div>
+
+        <div>
+            <ui v-for="item in array" v-if="isCreated">
+                <li>{{item}}</li>
+            </ui>
+        </div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                isCreated:true,
+                condition:1,
+                array:["asdasd","1231312","ashdjlhasdkjz"]
+            },
+            methods: {
+                handler(){
+                    this.isCreated=!this.isCreated;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

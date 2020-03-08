@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <input type="checkbox" v-model="allCheck" @change="allChange()">全选
+        <ul>
+            <li v-for="(data,index) in datalist">
+                <input type="checkbox" :value="data" v-model="groupList" @change="oneChange"> {{data}}
+                <button @click="delHandler(data)">del</button>
+                <button @click="data.number++">add</button>
+            </li>
+            {{groupList}}
+        </ul>
+        <p>
+            您一共需要支付:{{sumMon ey()}}元
+        </p>
+    </div>
+
+
+    <script>
+        new Vue({
+            el: "#box",
+            data: {
+                datalist: [
+                    {
+                        name: "商品1",
+                        price: 10,
+                        number: 1,
+                        id: "1",
+                    },
+                    {
+                        name: "商品2",
+                        price: 20,
+                        number: 2,
+                        id: "2",
+                    },
+                    {
+                        name: "商品3",
+                        price: 30,
+                        number: 3,
+                        id: "3",
+                    }
+                ],
+                groupList: [],
+                allCheck: false
+            },
+            methods: {
+                sumMoney() {
+                    var sum = 0;
+                    for (var i in this.groupList) {
+                        sum += this.groupList[i].number * this.groupList[i].price
+                    }
+                    return sum;
+                },
+                allChange() {
+                    if (this.allCheck) {
+                        this.groupList = this.datalist;
+                    } else {
+                        this.groupList = [];
+                    }
+                },
+                oneChange() {
+                    if (this.groupList.length === this.datalist.length) {
+                        this.allCheck = true;
+                    } else {
+                        this.allCheck = false;
+                    }
+                },
+                delHandler(data) {
+                    data.number--;
+                    if (data.number == 0) {
+                        data.number = 1;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
